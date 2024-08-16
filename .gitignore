@@ -1,0 +1,6 @@
+#exclude venv
+venv/
+venv/*
+venv
+./venv
+.env
