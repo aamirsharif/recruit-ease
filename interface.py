@@ -85,7 +85,7 @@ class ChatBot:
         tasks = []
         
         for index, row in df.iterrows():
-            if index > 1:
+            if index > 20:
                 break
             resume_text = row["Resume"]
             task = asyncio.create_task(self.get_ai_analysis(resume_text))
