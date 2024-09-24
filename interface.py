@@ -85,7 +85,7 @@ class ChatBot:
         tasks = []
         
         for index, row in df.iterrows():
-            if index > 20:
+            if index > 1:
                 break
             resume_text = row["Resume"]
             task = asyncio.create_task(self.get_ai_analysis(resume_text))
@@ -109,7 +109,7 @@ chatbot = ChatBot(api_key=API_KEY, model="gpt-4o-mini")
 
 if st.button("Analyze Resumes"):
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    st.write(f"Analysis started at: {current_time}")
+    # st.write(f"Analysis started at: {current_time}")
     
     with st.spinner('Analyzing resumes...'):
         start_time = time.time()
@@ -120,11 +120,11 @@ if st.button("Analyze Resumes"):
         st.session_state.analysis_results = analysis_results
 
         end_time = time.time()
-        execution_time = end_time - start_time
+        execution_time = round(end_time - start_time , 2)
 
     st.write(f"Total tokens consumed: {tokens}")
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    st.write(f"Analysis completed at: {current_time}")
+    # st.write(f"Analysis completed at: {current_time}")
     st.write(f"Execution time: {execution_time} seconds")
 
 if "analysis_results" in st.session_state:
